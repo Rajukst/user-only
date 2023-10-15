@@ -14,7 +14,7 @@ const UserForm = () => {
   } = useForm();
   const [axiosSecure]= useAxiosSecure()
   const navigate= useNavigate()
-  const img_hosting_url = `https://api.imgbb.com/1/upload?key=56e84312d788fcdf018db42d28178873`;
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=f9ac07b10a13ed0f0fc1151de85b1d26`;
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("image", data.image[0]);
@@ -39,7 +39,7 @@ const UserForm = () => {
                 if(data.insertedId){
                   toast.success("User created successfully");
                 }
-                navigate("/sidebar/userlist")
+                navigate("/users")
                 console.log('after successful data sending to server', data.data);
               })
         }
