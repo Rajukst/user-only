@@ -25,7 +25,7 @@ const Sidebar = () => {
     return (
         <>
         <ItemBox/>  
-        <div className="myNv">
+        <div className="myNv pt-4">
             <div className="searchBox mt-5">
             <input
             className='mySearch' 

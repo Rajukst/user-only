@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
-
+import noImage from "../asset/noimage.png"
 const ItemBox = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
@@ -16,8 +16,7 @@ const ItemBox = () => {
   };
   return (
     <div className="myBox">
-      <div className="boxItm">
-        <p>Photo</p>
+      <div className="boxItm pb-5">
         <Link className="nvItm" to="/users">
           Home
         </Link>
@@ -29,8 +28,32 @@ const ItemBox = () => {
         </Link>
         {user && (
           <div className="displayname">
-            <p>Hi, {user.displayName}</p>
-            <button className="button ps-1" onClick={handleLogout} role="button">
+            <div>
+                {user?.photoURL ? (
+                  <img
+                    className=""
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      borderRadius: "50%",
+                    }}
+                    src={user?.photoURL}
+                    alt={user?.displayName}
+                  />
+                ) : (
+                  <img
+                    className=""
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      borderRadius: "50%",
+                    }}
+                    src={noImage}
+                    alt=""
+                  />
+                )}
+              </div>
+            <button className="logOutButton ms-2" onClick={handleLogout} role="button">
               LogOut
             </button>
           </div>

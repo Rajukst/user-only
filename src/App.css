@@ -447,7 +447,7 @@ background-color:aquamarine;
   height: 45px;
 }
 .scrollTBL{
-  margin-top: 65px !important;
+  margin-top: 70px !important;
 }
 .userNM{
   position: fixed;
@@ -533,4 +533,10 @@ background-color:aquamarine;
 }
 .displayname{
   display: flex;
+}
+.logOutButton{
+  padding: 5px;
+  height: 40px;
+  background: none;
+  border-radius: 5px;
 }
