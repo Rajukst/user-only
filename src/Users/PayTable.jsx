@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
+import ItemBox from '../Nav/ItemBox';
 
 const PayTable = ({calculation, load, addPayment, paySubmit}) => {
     const { _id, interestRate,purchasePrice, name,installmentType, mobileNumber,lastDateOfPayment,purchaseDate, primaryDeposit } = calculation;
@@ -57,64 +58,70 @@ const PayTable = ({calculation, load, addPayment, paySubmit}) => {
   const installmentPerWeek = parseInt(salePrice / week);
   console.log(installmentPerWeek);
     return (
-        <>
-        <div className="usrInfo"> 
-    <h5 className='userNM'>User Name: {calculation.name}</h5>     
-    <h5 className='saleValue'>Sale Value: {salePrice}</h5>  
-    <h6 className='UsrId'>User ID: {calculation._id}</h6>  
-    <h6 className='remaingDue'>Remaining Due: {remaining} </h6>   
-    <div className="FlexProfess">
-         <h6 className='perInstall'>Per Installment Amount:
+      <>
+      <ItemBox/>   
+      <div className="usrInfo"> 
+<h5 className='userNM'>User Name: {calculation.name}</h5>     
+<h5 className='saleValue'>Sale Value: {salePrice}</h5>  
+<h6 className='UsrId'>User ID: {calculation._id}</h6>  
+<h6 className='remaingDue'>Remaining Due: {remaining} </h6>   
+<div className="FlexProfess">
+     <h6 className='perInstall'>Per Installment Amount:
+     
+      {installmentType === "monthly" ? (
+        <h6 className="ps-3 installMonth">{installmentPerMonth}Tk</h6>
+      ) : (
+        <h6 className="ps-3">{installmentPerWeek} Tk</h6>
+      )}
+      </h6>
+    </div>
+    </div>
+    <table className="payTble">
+    <thead>
+      <tr className="">
+        <th className="">SL No</th>
+        <th className="">Name</th>
+        <th>Pay Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {allPayment?.map((pay, index) => (
+        <tr className="hover" key={pay._id}>
+          <th>{index + 1}</th>
+          <td>{pay?.name}</td> 
+          <td>{pay?.payment}</td> 
+          {/* {admin && <button className="EDIT"><td><i className="fa-solid fa-pen-to-square"></i></td> </button>} */}
          
-          {installmentType === "monthly" ? (
-            <h6 className="ps-3 installMonth">{installmentPerMonth}Tk</h6>
-          ) : (
-            <h6 className="ps-3">{installmentPerWeek} Tk</h6>
-          )}
-          </h6>
-        </div>
-        </div> 
-      <table className="payTble">
-        <thead>
-          <tr className="">
-            <th className="">SL No</th>
-            <th className="">Name</th>
-            <th>Pay Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          {allPayment?.map((pay, index) => (
-            <tr className="hover" key={pay._id}>
-              <th>{index + 1}</th>
-              <td>{pay?.name}</td> 
-              <td>{pay?.payment}</td> 
-              {/* {admin && <button className="EDIT"><td><i className="fa-solid fa-pen-to-square"></i></td> </button>} */}
-             
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      {
-        totalDeposite>=salePrice ?
-        <>
-        <p>Your All Payment is completed</p>
-        <button className="mb-2">Reset Data</button>
-        </>
-        :
-        <>
-        <form onSubmit={paySubmit} >
-                <div className="paymentDiv">
-                <input type="text" name="" className="payInput" id="" placeholder='Make Payment' ref={addPayment} required/>
-                <br />
-                <input className="paymentBTN" type='submit' value="Pay" name='Pay'/>
-                </div>
-            </form>
-            <Link to="/products"><button className="backButton">Back</button></Link>
-        </>
-      }
-      
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  {
+    totalDeposite>=salePrice ?
+    <>
+    <p>Your All Payment is completed</p>
+    <button className="mb-2">Reset Data</button>
     </>
+    :
+    <>
+    <form onSubmit={paySubmit} >
+            <div className="paymentDiv">
+            <input type="text" name="" className="payInput" id="" placeholder='Make Payment' ref={addPayment} required/>
+            <br />
+            <input className="paymentBTN" type='submit' value="Pay" name='Pay'/>
+            </div>
+        </form>
+        <Link to="/products"><button className="backButton">Back</button></Link>
+    </>
+  } 
+       </>
     );
 };
 
 export default PayTable;
+/*
+
+
+
+
+*/
