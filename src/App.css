@@ -422,7 +422,7 @@ th, td {
   position: fixed;
   color: #000;
   width: 100%;
-  padding-bottom: 20px !important;
+  /* padding-bottom: 20px !important; */
 }
 .boxItm{
   display: flex;
@@ -506,7 +506,7 @@ background-color:aquamarine;
   font-weight: 600;
 }
 .formContainer{
-  padding-top: 70px;
+  padding-top: 130px;
 }
 
 
