@@ -1,40 +1,40 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-// import useAuth from '../../Hooks/useAuth';
+import useAuth from '../Hooks/useAuth';
+
 
 const Login = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors },
       } = useForm();
-    //   const navigate = useNavigate();
-    //   const location= useLocation();
-    //   const from= location.state?.from?.pathname || "/users"
-    //   const { signIn } = useAuth();
+      const navigate = useNavigate();
+      const location= useLocation();
+      const from= location.state?.from?.pathname || "/users"
+      const { signIn } = useAuth();
       const onSubmit = (data) => {
-        // signIn(data.email, data.password)
-        //   .then((result) => {
-        //     const loggedUser = result.user;
-        //     toast.success("Login Success!");
-        //     console.log(loggedUser);
-        //     navigate(from, {replace:true})
-        //   })
-        //   .catch((error) => toast.error(error.message));
+        signIn(data.email, data.password)
+          .then((result) => {
+            const loggedUser = result.user;
+            toast.success("Login Success!");
+            console.log(loggedUser);
+            navigate(from, {replace:true})
+          })
+          .catch((error) => toast.error(error.message));
       };
     return (
         <section>
       <div className="login-box">
-      {/* onSubmit={handleSubmit(onSubmit)} */}
-        <form>
+        {/* */}
+        <form onSubmit={handleSubmit(onSubmit)} >
           <h2 className="login-txt">Login</h2>
           <div className="input-box">
             <span className="icon">
               <i className="fa-solid fa-envelope"></i>
             </span>
-            {/* {...register("email")} */}
-            <input type="email" name="" id="names" required/>
+            <input type="email" name="" id="names" {...register("email")} required/>
             <label>Email</label>
           </div>
           <div className="input-box">
@@ -45,7 +45,7 @@ const Login = () => {
               type="password"
               name=""
               id="passwords"
-            //   {...register("password")}
+              {...register("password")}
               required
             />
             <label>Password</label>
@@ -64,6 +64,11 @@ const Login = () => {
             id=""
             value="Login"
           />
+          <div className="register-link">
+            <p>
+              Don't have an account? <Link to="register">Register</Link>
+            </p>
+          </div>
         </form>
       </div>
     </section>
@@ -71,3 +76,17 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+// import React from 'react';
+
+// const Login = () => {
+//   return (
+//     <div>
+//       <h1>This is Login</h1>
+//     </div>
+//   );
+// };
+
+// export default Login;
