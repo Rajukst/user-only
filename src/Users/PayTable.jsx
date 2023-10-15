@@ -111,7 +111,7 @@ const PayTable = ({calculation, load, addPayment, paySubmit}) => {
             <input className="paymentBTN" type='submit' value="Pay" name='Pay'/>
             </div>
         </form>
-        <Link to="/products"><button className="backButton">Back</button></Link>
+        <Link to="/users"><button className="backButton">Back</button></Link>
     </>
   } 
        </>
