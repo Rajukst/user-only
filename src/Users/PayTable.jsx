@@ -66,20 +66,20 @@ console.log(installmentPerWeek);
     <ItemBox/> 
  <div className="payboxes">
 <div className="sallpricebox">
-<h5>User Name: {calculation.name}</h5>     
-    <h5 className='ms-5'>Sale Value: {sellPrice}</h5> 
+<h6>User: {calculation.name}</h6> 
+<h6 className='ms-5'>User ID: {calculation.userSerialNo}</h6>  
   </div>
   <div className="paymentOption">
-    <h5>DownPayment: {primaryDeposit}</h5>
-  <h5 className='ms-5'>After DownPayment Price: {sellPrice-primaryDeposit}</h5>  
+  <h6 >Sale Value: {sellPrice}</h6> 
+    <h6 className='ms-5'>DownPayment: {primaryDeposit}</h6>
     </div> 
    <div className="serialInfo">
-   <h6>User ID: {calculation.userSerialNo}</h6>  
+   <h6>After DownPayment: {sellPrice-primaryDeposit}</h6>  
     <h6 className='ms-5'>Remaining Due: {remaining} </h6>  
    </div>
    <div className="installMent">
    <h6>Installment Type: { installmentType} </h6>   
-         <h6 className='ms-5'>Per Installment Amount</h6>
+         <h6 className='ms-5'>Installment Amount</h6>
           {installmentType === "monthly" ? (
           
             <h6 className="">:{installmentPerMonth}Tk</h6>
@@ -88,13 +88,13 @@ console.log(installmentPerWeek);
           )}
    </div>
    <div className="remainingInstall">
-   <h6>Total Installment</h6>
+   <h6>Total</h6>
           {installmentType === "monthly" ? (
             <h6 className="">:{month}</h6>
           ) : (
             <h6 className="">:{week}</h6>
           )}
-           <h6 className='ms-5'>Remaining Installment</h6>
+           <h6 className='ms-5'>Remaining</h6>
           {installmentType === "monthly" ? (
             <h6 className="">:{month-allPayment.length}</h6>
           ) : (
@@ -104,7 +104,7 @@ console.log(installmentPerWeek);
          
  </div>
     <div className="showingUL">
-    <table className="paytble">
+    <table className="">
         <thead>
           <tr className="">
             <th className="">SL No</th>
