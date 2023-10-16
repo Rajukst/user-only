@@ -107,11 +107,10 @@ console.log(installmentPerWeek);
     <table className="">
         <thead>
           <tr className="">
-            <th className="">SL No</th>
-          <th>Payment Date</th>
+            <th className="">SL</th>
+          <th>Pay Date</th>
             <th>Pay Amount</th>
-            <th>Collected By</th>
-      <th>Actions</th>
+            <th>Collect</th>
           </tr>
         </thead>
         <tbody>
