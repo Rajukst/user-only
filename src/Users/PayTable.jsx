@@ -5,7 +5,7 @@ import ItemBox from '../Nav/ItemBox';
 
 const PayTable = ({calculation, load, addPayment, paySubmit}) => {
     const { _id, interestRate,purchasePrice, name,installmentType, mobileNumber,lastDateOfPayment,purchaseDate, primaryDeposit } = calculation;
-    const url = `https://asadtelecom.onrender.com/allPayment?id=${_id}`;
+    const url = `https://sinhaenterprise.onrender.com/allPayment?id=${_id}`;
     const {
       data: allPayment = [],
       // isLoading,

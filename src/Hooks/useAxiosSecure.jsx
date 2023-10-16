@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 
 
 const axiosSecure = axios.create({
-  baseURL: 'https://asadtelecom.onrender.com', 
+  baseURL: 'https://sinhaenterprise.onrender.com', 
 });
 
 const useAxiosSecure = () => {

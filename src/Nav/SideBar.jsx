@@ -7,7 +7,7 @@ const Sidebar = () => {
     const [user, setUser] = useState([]);
     const [search, setSearch] = useState("");
     const navigate= useNavigate()
-    const url = "https://asadtelecom.onrender.com/detaCollection";
+    const url = "https://sinhaenterprise.onrender.com/detaCollection";
     useEffect(() => {
       fetch(url)
         .then((response) => response.json())
