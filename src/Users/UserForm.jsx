@@ -53,6 +53,7 @@ const UserForm = () => {
         <h4 className="userClass">পণ্য ক্রয় ফর্ম:</h4>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="fistElements ">
+         
           <div className="photos">
               <input
                 className="fileForm"
@@ -73,6 +74,30 @@ const UserForm = () => {
               />
             </div>
             </div>
+            <div className="officerName mt-3">
+              <p>ফিল্ড অফিসার: </p>
+              <div className="inputDiv">
+              <input
+                {...register("fieldofficername", { required: true, maxLength: 120 })}
+                className="textInp"
+
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+              </div>
+              <div className="fieldArea">
+              <div className="officerName">
+              <p> ফিল্ড এরিয়া: </p>
+              <div className="inputDiv">
+              <input
+                {...register("fieldarea", { required: true, maxLength: 120 })}
+                className="textInp"
+
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+              </div>
+              </div>
             <div className="nameDiv">
               <p>1. নাম: </p>
             </div>

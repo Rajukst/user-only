@@ -12,7 +12,7 @@ const PaymentCollection = () => {
     // const {user}= useAuth();
     // const collectiorName= user.displayName;
     useEffect(() => {
-      const url = `https://sinhaenterprise.onrender.com/calculation/${id}`;
+      const url = `https://sinhaenterprise-backend-production.up.railway.app/calculation/${id}`;
       fetch(url)
         .then((res) => res.json())
         .then((data) => setCalculation(data));
@@ -21,7 +21,7 @@ const PaymentCollection = () => {
     // /////////////////
   
     const lastPaymentDate = () => {
-      fetch(`https://sinhaenterprise.onrender.com/paymentData/${id}`, {
+      fetch(`https://sinhaenterprise-backend-production.up.railway.app/paymentData/${id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -52,7 +52,7 @@ const PaymentCollection = () => {
         mobileNumber,
         // collectiorName,
       };
-      fetch("https://sinhaenterprise.onrender.com/payment", {
+      fetch("https://sinhaenterprise-backend-production.up.railway.app/payment", {
         method: "POST",
         headers: {
           "content-type": "application/json",

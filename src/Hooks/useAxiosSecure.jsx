@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 
 
 const axiosSecure = axios.create({
-  baseURL: 'https://sinhaenterprise.onrender.com', 
+  baseURL: 'https://sinhaenterprise-backend-production.up.railway.app', 
 });
 
 const useAxiosSecure = () => {

@@ -9,7 +9,7 @@ const Sidebar = () => {
     // const [user, setUser] = useState([]);
     const [search, setSearch] = useState("");
     const navigate= useNavigate()
-    const url = `https://sinhaenterprise.onrender.com/detaCollection`;
+    const url = `https://sinhaenterprise-backend-production.up.railway.app/detaCollection`;
     const {
       data: user = [],
       isLoading,

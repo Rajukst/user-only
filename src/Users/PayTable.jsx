@@ -6,7 +6,7 @@ const PayTable = ({ calculation, load, addPayment, paySubmit}) => {
   const dateCount= new Date().toLocaleDateString();
   console.log(dateCount)
   console.log(lastDateOfPayment)
-  const url = `https://sinhaenterprise.onrender.com/allPayment?id=${_id}`;
+  const url = `https://sinhaenterprise-backend-production.up.railway.app/allPayment?id=${_id}`;
   const {
     data: allPayment = [],
     // isLoading,
