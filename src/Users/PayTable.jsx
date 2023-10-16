@@ -68,18 +68,14 @@ console.log(installmentPerWeek);
 <div className="sallpricebox">
 <h6>User: {calculation.name}</h6> 
 <h6 className='ms-5'>User ID: {calculation.userSerialNo}</h6>  
-  </div>
-  <div className="paymentOption">
-  <h6 >Sale Value: {sellPrice}</h6> 
-    <h6 className='ms-5'>DownPayment: {primaryDeposit}</h6>
-    </div> 
+  </div> 
    <div className="serialInfo">
    <h6>After DownPayment: {sellPrice-primaryDeposit}</h6>  
-    <h6 className='ms-5'>Remaining Due: {remaining} </h6>  
+    <h6 className='ms-5'>Due Amnt: {remaining} </h6>  
    </div>
    <div className="installMent">
    <h6>Installment Type: { installmentType} </h6>   
-         <h6 className='ms-5'>Installment Amount</h6>
+         <h6 className='ms-5'>Amount</h6>
           {installmentType === "monthly" ? (
           
             <h6 className="">:{installmentPerMonth}Tk</h6>
