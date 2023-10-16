@@ -2,26 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ItemBox from './ItemBox';
 import UsersShow from '../Users/UsersShow';
+import CustomLoader from '../CustomLoader/CustomLoader';
+import { useQuery } from 'react-query';
 
 const Sidebar = () => {
-    const [user, setUser] = useState([]);
+    // const [user, setUser] = useState([]);
     const [search, setSearch] = useState("");
     const navigate= useNavigate()
-    const url = "https://sinhaenterprise.onrender.com/detaCollection";
-    useEffect(() => {
-      fetch(url)
-        .then((response) => response.json())
-        .then((data) => setUser(data));
-    }, []);
+    const url = `https://sinhaenterprise.onrender.com/detaCollection`;
+    const {
+      data: user = [],
+      isLoading,
+    } = useQuery({
+      queryKey: ["detaCollection", ],
+      queryFn: async () => {
+        const res = await fetch(url);
+        const data = await res.json();
+        return data;
+      },
+    });
 
-    const handleLogout = () => {
-        // logOut()
-        //   .then(() => {
-        //     toast.success("User logged out");
-        //     navigate("/");
-        //   })
-        //   .catch((error) => console.log(error));
-      };
     return (
         <>
         <ItemBox/>  
@@ -35,6 +35,7 @@ const Sidebar = () => {
             </div>
         </div> 
        <main className='usrLst'>
+        {isLoading && <CustomLoader/>}
        <table className="scrollTBL">
         <thead>
           <tr>

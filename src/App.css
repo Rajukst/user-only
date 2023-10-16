@@ -483,8 +483,8 @@ background-color:aquamarine;
   width: 100%;
   padding-left: 10px;
 }
-.payTble{
-  margin-top: 120px;
+.showingUL{
+  padding-top: 260px;
 }
 .backButton{
   margin-top: 20px;
@@ -508,7 +508,6 @@ background-color:aquamarine;
 .formContainer{
   padding-top: 130px;
 }
-
 
 .textInp{
   border-top: none;
@@ -542,4 +541,26 @@ background-color:aquamarine;
 }
 .usrInfo{
   padding-top: 100px;
+}
+.payboxes{
+  background-color: aqua;
+  position: fixed;
+  margin-top: 100px;
+  width: 100%;
+  padding: 10px;
+}
+.sallpricebox{
+  display: flex;
+}
+.paymentOption{
+  display: flex;
+}
+.serialInfo{
+  display: flex;
+}
+.installMent{
+  display: flex;
+}
+.remainingInstall{
+  display: flex;
 }
