@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useState } from 'react';
 import ItemBox from './ItemBox';
 import UsersShow from '../Users/UsersShow';
 import CustomLoader from '../CustomLoader/CustomLoader';
@@ -8,7 +7,7 @@ import { useQuery } from 'react-query';
 const Sidebar = () => {
     // const [user, setUser] = useState([]);
     const [search, setSearch] = useState("");
-    const navigate= useNavigate()
+  
     const url = `https://sinhaenterprise-backend-production.up.railway.app/detaCollection`;
     const {
       data: user = [],
@@ -40,6 +39,7 @@ const Sidebar = () => {
         <thead>
           <tr>
             <th>SL</th>
+            <th>Usr</th>
             <th>Name</th>
             <th>Mobile</th>
             <th>Actions</th>
@@ -49,7 +49,9 @@ const Sidebar = () => {
           .filter((item) => {
             return search.toLowerCase() === ""
               ? item
-              : item?.name?.toLowerCase().includes(search);
+              : item?.name?.toLowerCase().includes(search) || item.userSerialNo?.includes(search)
+              
+              ;
           })
           ?.map((singleData, index) => (
             <UsersShow

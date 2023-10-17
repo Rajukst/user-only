@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const UsersShow = ({userData, index}) => {
-    const {_id,name, mobileNumber}= userData;
+    const {_id,name, mobileNumber, userSerialNo}= userData;
     const handleClick = () => {
       // Open the phone app.
       window.open(`tel:${mobileNumber}`);
@@ -12,6 +12,7 @@ const UsersShow = ({userData, index}) => {
         <tbody>
             <tr>
           <td>{index+1}</td>
+          <td>{userSerialNo}</td>
           <td>{name}</td>
           <td>  <a className='mobileHRF' href={`tel:${mobileNumber}`} onClick={handleClick}>
       {mobileNumber}
