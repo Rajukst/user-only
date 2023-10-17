@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import ItemBox from '../Nav/ItemBox';
 const PayTable = ({ calculation, load, addPayment, paySubmit}) => {
-  const { _id, sellPrice, name, installmentType, mobileNumber,lastDateOfPayment,purchaseDate, primaryDeposit } = calculation;
+  const { _id, sellPrice, name, installmentType,image, mobileNumber,lastDateOfPayment,purchaseDate, primaryDeposit } = calculation;
   const dateCount= new Date().toLocaleDateString();
   console.log(dateCount)
   console.log(lastDateOfPayment)
@@ -96,6 +96,7 @@ console.log(installmentPerWeek);
           ) : (
             <h6 className="">:{week-allPayment.length}</h6>
           )}
+          <img className='userImg' src={image} alt="" />
    </div>
          
  </div>
