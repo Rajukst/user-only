@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import PayTable from './PayTable';
 import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
 
 const PaymentCollection = () => {
     const { id} = useParams();
@@ -9,8 +10,8 @@ const PaymentCollection = () => {
     const [calculation, setCalculation] = useState({});
     const [load, setLoad] = useState(false);
     const { name, mobileNumber } = calculation;
-    // const {user}= useAuth();
-    // const collectiorName= user.displayName;
+    const {user}= useAuth();
+    const collectiorName= user.displayName;
     useEffect(() => {
       const url = `https://sinhaenterprise-backend-production.up.railway.app/calculation/${id}`;
       fetch(url)
@@ -50,7 +51,7 @@ const PaymentCollection = () => {
         name,
         payStatus,
         mobileNumber,
-        // collectiorName,
+        collectiorName,
       };
       fetch("https://sinhaenterprise-backend-production.up.railway.app/payment", {
         method: "POST",
