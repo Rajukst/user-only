@@ -9,7 +9,7 @@ const PaymentCollection = () => {
     const addPayment = useRef();
     const [calculation, setCalculation] = useState({});
     const [load, setLoad] = useState(false);
-    const { name, mobileNumber } = calculation;
+    const { name, mobileNumber, userSerialNo } = calculation;
     const {user}= useAuth();
     const collectiorName= user.displayName;
     useEffect(() => {
@@ -52,6 +52,7 @@ const PaymentCollection = () => {
         payStatus,
         mobileNumber,
         collectiorName,
+        userSerialNo
       };
       fetch("https://sinhaenterprise-backend-production.up.railway.app/payment", {
         method: "POST",
