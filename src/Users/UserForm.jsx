@@ -30,10 +30,10 @@ const UserForm = () => {
           const {
             age,dateOfBirth,fathersName,guranterAddress, guranterMobile,guranterName,ifPaidRegular, installmentType,interestRate,
             lastDateOfPayment,mobileNumber,mothersName,name,parmanentAddress,pastProductTake,presentAddress,primaryDeposit,productDetails,
-            productName,profession,purchaseDate,sellPrice, userSerialNo} = data;
+            productName,profession,purchaseDate,sellPrice, userSerialNo, customerType,nid} = data;
             const newData={ age,dateOfBirth,fathersName,guranterAddress, guranterMobile,guranterName,ifPaidRegular, installmentType,interestRate,
               lastDateOfPayment,mobileNumber,mothersName,name,parmanentAddress,pastProductTake,presentAddress,primaryDeposit,productDetails,
-              productName,profession,purchaseDate,sellPrice,userSerialNo, image:imgURL}
+              productName,profession,purchaseDate,sellPrice,userSerialNo,customerType,nid, image:imgURL}
               axiosSecure.post('/clientData', newData)
               .then(data => {
                 if(data.insertedId){
@@ -52,8 +52,7 @@ const UserForm = () => {
       <div className="formDiv">
         <h4 className="userClass">পণ্য ক্রয় ফর্ম:</h4>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="fistElements ">
-         
+          <div className="fistElements ">  
           <div className="photos">
               <input
                 className="fileForm"
@@ -182,10 +181,24 @@ const UserForm = () => {
               />
             </div>
           </div>
-
+          <div className="fistElements">
+            <div className="nameDiv">
+              <p>7. জাতীয় পরিচয়পত্র নম্বর: </p>
+            </div>
+            <div className="inputDiv">
+              <input
+                className="textInp"
+                {...register("nid", {
+                  required: true,
+                  maxLength: 120,
+                })}
+                // onChange={(e) => setMobileNumber(e.target.value)}
+              />
+            </div>
+          </div>
           <div className="tempGrid mt-2">
             <div className="names">
-              <p className="ptag pe-2">7. পেশা: </p>
+              <p className="ptag pe-2">8. পেশা: </p>
               <input
                 className="textInp"
                 {...register("profession")}
@@ -194,7 +207,7 @@ const UserForm = () => {
               />
             </div>
             <div className="names">
-              <p className="ptag pe-2">8. জন্ম তারিখ: </p>
+              <p className="ptag pe-2">9. জন্ম তারিখ: </p>
               <input
                 className="textInp"
                 type="date"
@@ -204,7 +217,7 @@ const UserForm = () => {
               />
             </div>
             <div className="names">
-              <p className="ptag pe-2">9. বয়স: </p>
+              <p className="ptag pe-2">10. বয়স: </p>
               <input
                 className="textInp"
                 {...register("age", { required: true, maxLength: 120 })}
@@ -213,9 +226,22 @@ const UserForm = () => {
               />
             </div>
           </div>
-
-          <div className="names pt-3">
-            <p>10. আবেদনকৃত পণ্যের বিবরণ: </p>
+          <div className="detailsOfP mt-2">
+            <p className="pe-2">11. আবেদনকৃত পণ্য/নগদ টাকার বিবরণ: </p>
+            <div className="inputTitle">
+              <select
+                className="selectClasss"
+                {...register("customerType", {
+                  required: true,
+                  maxLength: 120,
+                })}
+                // onChange={(e) => setPastProductTake(e.target.value)}
+              >
+                  <option value="select">নির্বাচন করুন</option>
+                  <option value="cash">নগদ টাকা</option>
+                  <option value="product">পণ্য</option>
+              </select>
+            </div>
           </div>
 
           <div className="tempGrids">
@@ -241,7 +267,7 @@ const UserForm = () => {
           </div>
 
           <div className="names pt-3">
-            <p>11. অর্থ প্রদানের বিবরণ: </p>
+            <p>12. অর্থ প্রদানের বিবরণ: </p>
           </div>
 
           <div className="tempGrids">
@@ -296,7 +322,7 @@ const UserForm = () => {
           </div>
 
           <div className="names pt-3">
-            <p>12. কিস্তি পরিশোধের বিবরণ: </p>
+            <p>13. কিস্তি পরিশোধের বিবরণ: </p>
           </div>
           <div className="tempGrids">
             <div className="names">
@@ -318,7 +344,7 @@ const UserForm = () => {
             </div>
           </div>
           <div className="namess">
-            <p className="newNames">13.ইতিপূর্বে কোন পণ্য গ্রহণ করেছেন? </p>
+            <p className="newNames">14.ইতিপূর্বে কোন পণ্য গ্রহণ করেছেন? </p>
             <div className="inputTitle">
               <select
                 className="selectClasss"
@@ -336,7 +362,7 @@ const UserForm = () => {
           </div>
 
           <div className="namess">
-            <p className="newNames">14.পণ্যের মূল্য নিয়মিত পরিশোধ করেছেন? </p>
+            <p className="newNames">15.পণ্যের মূল্য নিয়মিত পরিশোধ করেছেন? </p>
             <div className="inputTitle">
               <select
                 className="selectClasss"
@@ -354,7 +380,7 @@ const UserForm = () => {
           </div>
 
           <div className="namessss pt-3">
-            <p>15. গ্যারান্টার বা নিশ্চয়তা প্রদানকারীর বিবরণ: </p>
+            <p>16. গ্যারান্টার বা নিশ্চয়তা প্রদানকারীর বিবরণ: </p>
           </div>
           <div className="tempGrid mt-2">
             <div className="names">
@@ -396,7 +422,7 @@ const UserForm = () => {
           </div>
 
           <div className="names pt-3">
-            <p>16. অঙ্গীকারনামা: </p>
+            <p>17. অঙ্গীকারনামা: </p>
           </div>
           <div className="angikarnama">
             <p>

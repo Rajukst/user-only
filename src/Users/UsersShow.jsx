@@ -15,8 +15,9 @@ const UsersShow = ({userData, index}) => {
           <td>{userSerialNo}</td>
           <td>{name}</td>
           <td>  <a className='mobileHRF' href={`tel:${mobileNumber}`} onClick={handleClick}>
-      {mobileNumber}
-    </a></td>
+          <i className="fa-solid fa-phone"></i>
+    </a>
+    </td>
           <td>
           <Link className="titleLink" to={`/products/${_id}`}>
           <i className="fa-solid fa-calculator fa-2x ps-3"></i>

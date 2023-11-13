@@ -484,7 +484,7 @@ background-color:aquamarine;
   padding-left: 10px;
 }
 .showingUL{
-  padding-top: 240px;
+  padding-top: 320px;
 }
 .backButton{
   margin-top: 20px;
@@ -569,4 +569,43 @@ background-color:aquamarine;
   width: 50px;
   border-radius: 50%;
   margin-left: 60px;
+}
+.detailsOfP{
+  display: flex;
+}
+.nameComp{
+  display: flex;
+  justify-content: space-between;
+}
+.cashInfo{
+  display: flex;
+  justify-content: space-between;
+}
+.deposCon{
+  display: flex;
+  justify-content: space-between;
+}
+.Remainings{
+  display: flex;
+  justify-content: space-between;
+}
+.myOposn{
+  display: flex;
+  justify-content: space-between;
+}
+.abcNols{
+  display: flex;
+}
+.installInfo{
+  display: flex;
+  justify-content: space-between;
+}
+.infoInsall{
+  display: flex;
+}
+.paymentDivs{
+  display: flex;
+}
+.myisnt{
+  display: flex;
 }
