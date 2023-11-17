@@ -15,7 +15,7 @@ const UsersShow = ({userData, index}) => {
           <td>{userSerialNo}</td>
           <td>{name}
           {
-            customerType ==="cash" ? <div style={{color:"turquoise"}}>C</div> : <div style={{color:"aqua"}}>P</div>
+            customerType ==="cash" ? <div style={{color:"turquoise", display:"flex"}}>C</div> : <div style={{color:"blue"}}>P</div>
           }</td>
           <td>  <a className='mobileHRF' href={`tel:${mobileNumber}`} onClick={handleClick}>
           <i className="fa-solid fa-phone"></i>
