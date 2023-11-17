@@ -3,6 +3,7 @@ import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import useAuth from '../Hooks/useAuth';
 
 const PhotoUpload = () => {
   const {
@@ -12,7 +13,8 @@ const PhotoUpload = () => {
   const [axiosSecure] = useAxiosSecure();
   const navigate = useNavigate();
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=f9ac07b10a13ed0f0fc1151de85b1d26`;
-
+const {user}= useAuth();
+const userName= user.displayName;
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append("image", data.image[0]);
@@ -25,7 +27,8 @@ const PhotoUpload = () => {
       .then((imgResponse) => {
         if (imgResponse.success) {
           const imgURL = imgResponse.data.display_url;
-          const newData = { image: imgURL };
+          const {userName}= data;
+          const newData = {userName, image: imgURL };
           axiosSecure.post('/userphoto', newData)
             .then(data => {
               if (data.insertedId) {
