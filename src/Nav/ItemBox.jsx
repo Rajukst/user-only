@@ -24,7 +24,7 @@ const ItemBox = () => {
           Add
         </Link>
         <Link className="nvItm" to="/userphoto">
-          Photo Upload
+          Photo
         </Link>
         {user && (
           <div className="displayname">

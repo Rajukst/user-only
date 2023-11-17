@@ -40,17 +40,20 @@ const PhotoUpload = () => {
 
   return (
     <>
-      <div className="photos">
+      <div className="photosss">
         <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="myCokj">
+            <h5>Upload Your Photo</h5>
           <input
             className="fileForm"
-            {...register("image")}
+            {...register("image", { required: true, maxLength: 120 })}
             type="file"
             accept="image/*"
             capture="camera" // This captures a photo using the device camera
           />
-          <br /> <br />
-          <input type="submit" name="Submit" id="" />
+            </div>
+            <br/>
+          <input className="logOutButton" type="submit" name="Submit" id="" />
         </form>
       </div>
     </>

@@ -609,3 +609,13 @@ background-color:aquamarine;
 .myisnt{
   display: flex;
 }
+.photosss {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Optional: Set height to the viewport height if you want to center vertically */
+}
+.myCokj{
+  border: 1px solid black;
+}
