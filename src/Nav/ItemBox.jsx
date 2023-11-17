@@ -23,8 +23,8 @@ const ItemBox = () => {
         <Link className="nvItm" to="/add">
           Add
         </Link>
-        <Link className="nvItm" to="/upcomingpay">
-          Upcoming
+        <Link className="nvItm" to="/userphoto">
+          Photo Upload
         </Link>
         {user && (
           <div className="displayname">

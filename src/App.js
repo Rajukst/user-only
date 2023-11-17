@@ -7,6 +7,7 @@ import Sidebar from './Nav/SideBar';
 import { Toaster } from 'react-hot-toast';
 import UpcomingPayment from './Users/UpcomingPayment';
 import UserForm from './Users/UserForm';
+import PhotoUpload from './Users/PhotoUpload';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
     <Route path='/users' element={<Sidebar/>}/>
     <Route path='/add' element={<UserForm/>}/>
     <Route path="/products/:id" element={<PaymentCollection/>} />
-    <Route path="/upcomingpay" element={<UpcomingPayment/>} />
+    <Route path="/userphoto" element={<PhotoUpload/>} />
      </Routes>
      <Toaster
   position="top-right"
