@@ -15,31 +15,51 @@ const PhotoUpload = () => {
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=f9ac07b10a13ed0f0fc1151de85b1d26`;
 const {user}= useAuth();
 const userName= user.displayName;
-  const onSubmit = (data) => {
-    const formData = new FormData();
+const onSubmit = (data) => {
+  const formData = new FormData();
+
+  formData.append("image", data.image[0]);
   
-    formData.append("image", data.image[0]);
-    fetch(img_hosting_url, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((imgResponse) => {
-        if (imgResponse.success) {
-          const imgURL = imgResponse.data.display_url;
-          const newData = {image: imgURL,
-            userName: userName,};
-          axiosSecure.post('/userphoto', newData)
-            .then(data => {
-              if (data.insertedId) {
-                toast.success("User created successfully");
-              }
-              navigate("/users");
-              console.log('after successful data sending to server', data.data);
-            })
-        }
-      });
-  };
+  fetch(img_hosting_url, {
+    method: "POST",
+    body: formData,
+  })
+    .then((res) => res.json())
+    .then((imgResponse) => {
+      if (imgResponse.success) {
+        const imgURL = imgResponse.data.display_url;
+        
+        // Get the current date and time
+        const currentDate = new Date();
+        
+        // Format date and time in 12-hour format
+        const formattedDate = currentDate.toLocaleString('en-US', {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          second: 'numeric',
+          hour12: true,
+        });
+
+        const newData = {
+          image: imgURL,
+          userName: userName,
+          uploadDateTime: formattedDate, // Add this property for date and time
+        };
+
+        axiosSecure.post('/userphoto', newData)
+          .then(data => {
+            if (data.insertedId) {
+              toast.success("User created successfully");
+            }
+            navigate("/users");
+            console.log('after successful data sending to server', data.data);
+          })
+      }
+    });
+};
 
   return (
     <>
