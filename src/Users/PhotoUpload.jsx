@@ -17,8 +17,8 @@ const {user}= useAuth();
 const userName= user.displayName;
   const onSubmit = (data) => {
     const formData = new FormData();
+  
     formData.append("image", data.image[0]);
-
     fetch(img_hosting_url, {
       method: "POST",
       body: formData,
@@ -27,8 +27,8 @@ const userName= user.displayName;
       .then((imgResponse) => {
         if (imgResponse.success) {
           const imgURL = imgResponse.data.display_url;
-          const {userName}= data;
-          const newData = {userName, image: imgURL };
+          const newData = {image: imgURL,
+            userName: userName,};
           axiosSecure.post('/userphoto', newData)
             .then(data => {
               if (data.insertedId) {
