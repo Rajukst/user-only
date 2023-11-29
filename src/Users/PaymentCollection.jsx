@@ -17,7 +17,7 @@ const PaymentCollection = () => {
     const {user}= useAuth();
     const collectiorName= user.displayName;
     useEffect(() => {
-      const url = `https://sinhaenterprise-backend-production.up.railway.app/calculation/${id}`;
+      const url = `https://sinhaenterprise.onrender.com/calculation/${id}`;
       fetch(url)
         .then((res) => res.json())
         .then((data) => setCalculation(data));
@@ -29,7 +29,7 @@ const PaymentCollection = () => {
       // Logic for updating last payment date based on customerType
       if (calculation?.customerType === "cash") {
         if (calculation?.installmentType === "weekly") {
-          fetch(`https://sinhaenterprise-backend-production.up.railway.app/cashpaymentData/${id}`, {
+          fetch(`https://sinhaenterprise.onrender.com/cashpaymentData/${id}`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",
@@ -42,7 +42,7 @@ const PaymentCollection = () => {
               }
             });
         } else if (calculation?.installmentType === "monthly") {
-          fetch(`https://sinhaenterprise-backend-production.up.railway.app/cashmonthlypaymentData/${id}`, {
+          fetch(`https://sinhaenterprise.onrender.com/cashmonthlypaymentData/${id}`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",
@@ -57,7 +57,7 @@ const PaymentCollection = () => {
         }
       } else if (calculation?.customerType === "product") {
         if (calculation?.installmentType === "weekly") {
-          fetch(`https://sinhaenterprise-backend-production.up.railway.app/paymentData/${id}`, {
+          fetch(`https://sinhaenterprise.onrender.com/paymentData/${id}`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",
@@ -70,7 +70,7 @@ const PaymentCollection = () => {
               }
             });
         } else if (calculation?.installmentType === "monthly") {
-          fetch(`https://sinhaenterprise-backend-production.up.railway.app/monthlypaymentData/${id}`, {
+          fetch(`https://sinhaenterprise.onrender.com/monthlypaymentData/${id}`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",
@@ -110,7 +110,7 @@ const PaymentCollection = () => {
       userSerialNo,
       note
     };
-    fetch("https://sinhaenterprise-backend-production.up.railway.app/cashpayment", {
+    fetch("https://sinhaenterprise.onrender.com/cashpayment", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -141,7 +141,7 @@ const PaymentCollection = () => {
       collectiorName,
       userSerialNo,
     };
-    fetch("https://sinhaenterprise-backend-production.up.railway.app/payment", {
+    fetch("https://sinhaenterprise.onrender.com/payment", {
       method: "POST",
       headers: {
         "content-type": "application/json",

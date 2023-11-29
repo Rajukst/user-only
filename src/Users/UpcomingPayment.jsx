@@ -11,7 +11,7 @@ const UpcomingPayment = () => {
     // console.log(startDate.toLocaleString())
     const formattedDate = `${startDate.getMonth() + 1}-${startDate.getDate()}-${startDate.getFullYear()}`;
     console.log(formattedDate)
-    const url = `https://sinhaenterprise-backend-production.up.railway.app/todaysPayment/${formattedDate}`;
+    const url = `https://sinhaenterprise.onrender.com/todaysPayment/${formattedDate}`;
     const {
       data: upcomingPayment = [],
       isLoading,

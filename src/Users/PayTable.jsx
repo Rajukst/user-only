@@ -23,8 +23,8 @@ const PayTable = ({ calculation, load, addPayment,addNote, paySubmit,addCashPaym
 
   const url =
     customerType === 'cash'
-      ? `https://sinhaenterprise-backend-production.up.railway.app/cashallPayment?id=${_id}`
-      : `https://sinhaenterprise-backend-production.up.railway.app/allPayment?id=${_id}`;
+      ? `https://sinhaenterprise.onrender.com/cashallPayment?id=${_id}`
+      : `https://sinhaenterprise.onrender.com/allPayment?id=${_id}`;
 
   const { data: paymentData = [], refetch } = useQuery({
     queryKey: ['allPayment', _id, name, mobileNumber, load],
@@ -118,7 +118,7 @@ console.log(countWithOutDeposit)
         'Are you sure you want to delete this Payment?'
       );
       if (permissionDelete) {
-        const deleteUrl = `https://sinhaenterprise-backend-production.up.railway.app/cashdetaCollectionallPayment/${paymentId}`;
+        const deleteUrl = `https://sinhaenterprise.onrender.com/cashdetaCollectionallPayment/${paymentId}`;
         fetch(deleteUrl, {
           method: 'DELETE',
         })
@@ -142,7 +142,7 @@ console.log(countWithOutDeposit)
         'Are you sure you want to delete this Payment?'
       );
       if (permissionDelete) {
-        const deleteUrl = `https://sinhaenterprise-backend-production.up.railway.app/detaCollectionallPayment/${paymentId}`;
+        const deleteUrl = `https://sinhaenterprise.onrender.com/detaCollectionallPayment/${paymentId}`;
   
         fetch(deleteUrl, {
           method: 'DELETE',
