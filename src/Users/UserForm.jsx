@@ -16,9 +16,10 @@ const UserForm = () => {
   const navigate= useNavigate()
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=f9ac07b10a13ed0f0fc1151de85b1d26`;
   const onSubmit = (data) => {
+    
     const formData = new FormData();
     formData.append("image", data.image[0]);
-
+  
     fetch(img_hosting_url, {
       method: "POST",
       body: formData,
@@ -28,22 +29,94 @@ const UserForm = () => {
         if (imgResponse.success) {
           const imgURL = imgResponse.data.display_url;
           const {
-            age,dateOfBirth,fathersName,guranterAddress, guranterMobile,guranterName,ifPaidRegular, installmentType,interestRate,
-            lastDateOfPayment,mobileNumber,mothersName,name,parmanentAddress,pastProductTake,presentAddress,primaryDeposit,productDetails,
-            productName,profession,purchaseDate,sellPrice, userSerialNo, customerType,nid} = data;
-            const newData={ age,dateOfBirth,fathersName,guranterAddress, guranterMobile,guranterName,ifPaidRegular, installmentType,interestRate,
-              lastDateOfPayment,mobileNumber,mothersName,name,parmanentAddress,pastProductTake,presentAddress,primaryDeposit,productDetails,
-              productName,profession,purchaseDate,sellPrice,userSerialNo,customerType,nid, image:imgURL}
-              axiosSecure.post('/clientData', newData)
-              .then(data => {
-                if(data.insertedId){
-                  toast.success("User created successfully");
-                }
-                navigate("/users")
-                console.log('after successful data sending to server', data.data);
-              })
-        }
-      });
+            age,
+            dateOfBirth,
+            fathersName,
+            guranterAddress,
+            guranterMobile,
+            guranterName,
+            ifPaidRegular,
+            installmentType,
+            interestRate,
+            lastDateOfPayment,
+            mobileNumber,
+            mothersName,
+            name,
+            parmanentAddress,
+            pastProductTake,
+            presentAddress,
+            primaryDeposit,
+            productDetails,
+            productName,
+            profession,
+            purchaseDate,
+            sellPrice,
+            userSerialNo,
+            fieldofficername,
+            fieldarea,
+            nid,
+            customerType,
+          } = data;
+          const newData = {
+            age,
+            dateOfBirth,
+            fathersName,
+            guranterAddress,
+            guranterMobile,
+            guranterName,
+            ifPaidRegular,
+            installmentType,
+            interestRate,
+            lastDateOfPayment,
+            mobileNumber,
+            mothersName,
+            name,
+            parmanentAddress,
+            pastProductTake,
+            presentAddress,
+            primaryDeposit,
+            productDetails,
+            productName,
+            profession,
+            purchaseDate,
+            sellPrice,
+            userSerialNo,
+            nid,
+            fieldarea,
+            fieldofficername,
+            customerType,
+            image: imgURL,
+          };
+  
+          // Post user data to your server
+          axiosSecure.post("/clientData", newData)
+          .then((serverResponse) => {
+            if (serverResponse.data.insertedId) {
+              toast.success("User created successfully");
+              const smsApiUrl =  `https://api.boom-cast.com/boomcast/WebFramework/boomCastWebService/externalApiSendTextMessage.php?masking=SinhaEnterp&userName=Sinha_Enterprise&password=42c828c0403112d5c549df03ae81d3df&MsgType=TEXT&receiver=${mobileNumber}&message=স্বাগতম ${name}. আইডি নং- ${userSerialNo}, টাকা/পণ্য গ্রহণের পরিমান: ${sellPrice}। সিনহা এন্টারপ্রাইজের সাথেই থাকুন।`;
+              // Send SMS
+              fetch(smsApiUrl)
+                .then((smsResponse) => smsResponse.text())
+                .then((smsResult) => {
+                  console.log('SMS sent:', smsResult);
+                })
+                .catch((smsError) => {
+                  console.error('Error sending SMS:', smsError);
+                });
+
+              // Redirect to userlist page
+              navigate("/sidebar/userlist");
+              console.log('after successful data sending to server', serverResponse.data);
+            }
+          })
+          .catch((error) => {
+            console.error('Error posting user data:', error);
+          });
+      }
+    })
+    .catch((error) => {
+      console.error('Error uploading image:', error);
+    });
   };
   return (
     <>

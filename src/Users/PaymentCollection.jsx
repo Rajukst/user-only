@@ -123,6 +123,16 @@ const PaymentCollection = () => {
           lastPaymentDate();
           e.target.reset();
           setLoad(!load);
+            const smsApiUrl =  `https://api.boom-cast.com/boomcast/WebFramework/boomCastWebService/externalApiSendTextMessage.php?masking=SinhaEnterp&userName=Sinha_Enterprise&password=42c828c0403112d5c549df03ae81d3df&MsgType=TEXT&receiver=${mobileNumber}&message=জনাব ${name}. আইডি: ${userSerialNo}, কিস্তি ${cashCollection} টাকা, সঞ্চয় ${cashDeposit} টাকা পরিশোধিত হয়েছে। টাকা গ্রহণ করেছেন ${collectiorName}. সিনহা এন্টারপ্রাইজের সাথেই থাকুন।`;
+            // Send SMS
+            fetch(smsApiUrl)
+              .then((smsResponse) => smsResponse.text())
+              .then((smsResult) => {
+                console.log('SMS sent:', smsResult);
+              })
+              .catch((smsError) => {
+                console.error('Error sending SMS:', smsError);
+              });
         }
         console.log(data);
       });
@@ -154,10 +164,21 @@ const PaymentCollection = () => {
           lastPaymentDate();
           e.target.reset();
           setLoad(!load);
+          const smsApiUrl =  `https://api.boom-cast.com/boomcast/WebFramework/boomCastWebService/externalApiSendTextMessage.php?masking=SinhaEnterp&userName=Sinha_Enterprise&password=42c828c0403112d5c549df03ae81d3df&MsgType=TEXT&receiver=${mobileNumber}&message=জনাব ${name}, আইডি: ${userSerialNo}, পণ্য বাবদ ${payment}টাকা পরিশোধিত হয়েছে। টাকা গ্রহণ করেছেন ${collectiorName}. সিনহা এন্টারপ্রাইজের সাথেই থাকুন।`;
+          // Send SMS
+          fetch(smsApiUrl)
+            .then((smsResponse) => smsResponse.text())
+            .then((smsResult) => {
+              console.log('SMS sent:', smsResult);
+            })
+            .catch((smsError) => {
+              console.error('Error sending SMS:', smsError);
+            });
         }
         console.log(data);
       });
   };
+
     return (
       <>
      <PayTable
